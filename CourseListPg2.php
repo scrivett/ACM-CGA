@@ -12,8 +12,14 @@
 	var p = new URL(url);
 	n = 1;
 	
-	while((p.searchParams.get('course' + n)) != null){
-	listCourses.push(p.searchParams.get('course' + n));
+	while((courseName = p.searchParams.get('course' + n)) != null){
+	listCourses.push(courseName);
+		<?php
+		$con = mysqli_connect("127.0.0.1","root","password","acm");
+		$insertCourses = "INSERT INTO Course_Curriculum (Name)
+		 "VALUES (" + courseName + ")";
+		mysqli_query($con, $insertCourses); 
+		?>
 	n++;
 	}
 	console.log(listCourses);
