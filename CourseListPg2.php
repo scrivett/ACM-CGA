@@ -5,6 +5,7 @@
 </head>
 
 <body>
+	<center>
 	<div id="test1">
 	</div>
 	<script>
@@ -12,16 +13,17 @@
 	var p = new URL(url);
 	n = 1;
 	
-	while((courseName = p.searchParams.get('course' + n)) != null){
-	listCourses.push(courseName);
+    while((courseName = p.searchParams.get('course' + n)) != null){
+        listCourses.push(courseName);
 		<?php
 		$con = mysqli_connect("127.0.0.1","root","password","acm");
-		$insertCourses = "INSERT INTO Course_Curriculum (Name)
+		$insertCourses = "INSERT INTO Course_Curriculum (Name)" + 
 		 "VALUES (" + courseName + ")";
 		mysqli_query($con, $insertCourses); 
 		?>
-	n++;
+        n++;
 	}
+    
 	console.log(listCourses);
 	start = 0;
 	while(start < n - 1 ){
@@ -30,4 +32,5 @@
 	}
 	</script>
 	<input type="submit" name="Submit" value="Generate Report" onClick="location.href='Report.php'";>
+	</center>
 </body>
